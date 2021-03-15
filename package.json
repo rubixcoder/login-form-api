@@ -4,7 +4,8 @@
   "description": "Express API service for authentication with mock data",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive --exit",
+    "test-coverage": "nyc npm run test"
   },
   "author": "Surbhi Harsh",
   "license": "ISC",
@@ -15,5 +16,10 @@
     "express": "^4.17.1",
     "swagger-ui-express": "^4.1.6",
     "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "nyc": "^15.1.0"
   }
 }
