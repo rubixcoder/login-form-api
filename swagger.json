@@ -1,0 +1,107 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Documentation of Login Form API",
+        "description": "Login API Application",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/users/authenticate": {
+            "post": {
+                "summary": "validate user credentials",
+                "parameters": [
+                    {
+                        "name": "User",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#definitions/LoginCredential"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "required": [
+                "username",
+                "password",
+                "firstName",
+                "lastName"
+            ],
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                }
+            }
+        },
+        "LoginCredential": {
+            "required": [
+                "username",
+                "password"
+            ],
+            "properties": {
+                "username": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "Error": {
+            "required": [
+                "ERR_CODE"
+            ],
+            "properties": {
+                "ERR_CODE": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
